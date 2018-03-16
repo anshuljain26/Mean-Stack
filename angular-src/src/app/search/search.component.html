@@ -1,0 +1,6 @@
+<form #SearchForm = 'ngForm' class="navbar-form navbar-left" (ngSubmit)='formSubmit(event, SearchForm)'>
+        <div class="form-group">	
+          <input type="text" class="form-control" placeholder="Search" name="q" [(ngModel)]="SearchQuery" />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>

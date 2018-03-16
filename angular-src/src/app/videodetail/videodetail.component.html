@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+          <div *ngIf='!video && !errorStr'>Loading</div>
+          <div *ngIf='errorStr' class='text-center'><h1>{{ errorStr }}</h1></div>
+            <div *ngIf='video'>
+                  <h1 style="text-align: center; color:white;">{{ video.name }}</h1>
+                 <br/><br>
+                  <div class="thumbnail" style="margin-top: -40px; margin-left: 120px;" >  
+                	<video width="920" height="520" controls (click)="playpause()" #videoPlayer>
+                    		<source src="../../assets/{{video.image}}" type="video/mp4" />
+               			 </video>
+             	  </div>
+           </div>   
+
+      </div>
+    <span><i class="far fa-clock"></i>  
+    <div class="col-md-3" *ngIf='check ==0'>
+
+        <angular2-date-picker [(ngModel)]="formModel.date" [settings]="settings" (onDateSelect)="onDateSelect($event)"></angular2-date-picker> 
+
+    </div>  
+    </span>
+
+    <div class="col-md-3" *ngIf='check !==0 && check !==2'>
+      <a class="btn btn-info">Watch Later Set</a>  
+
+    </div>
+  </div>  
+
+</div>
+
+
+<h3 style="color: white;">Add Comments</h3>
+
+<form (submit)="comment()">
+  <fieldset>
+    <div class="form-group">
+      <label for="exampleInputEmail1" style="color: white;">Email address</label>
+      <input type="email" class="form-control" name="email" [(ngModel)]="email" id="email" value=""
+      id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      <small id="emailHelp" class="form-text text-muted" style="color: white;">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleTextarea" style="color: white;">Comment</label>
+      <textarea class="form-control" name="comment" [(ngModel)]="Comment" id="comment" placeholder="Comment" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-info">Add Comment</button>
+  </fieldset>
+</form>
+
+<hr>
+
+<div class="container">			
+	<div *ngIf='video'>
+		<div *ngFor='let abc of video.comments'>
+			<div class="well">
+					<li class="lead">{{abc.commentby}}</li>
+						<h5 style="margin-left: 50px; color: black;">{{abc.comment}}</h5>
+			</div><!-- /row -->
+		</div>	
+		<hr>
+	</div>
+
+</div><!-- /container -->

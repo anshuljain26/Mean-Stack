@@ -1,0 +1,80 @@
+<div class="container">
+
+	<div class="row">
+
+		<div class="well" *ngFor='let abc of video' style="background-color: #7c5863">
+
+			<div *ngIf='abc.createdBy === username'>
+					<ul class="list-group" *ngFor='let share of abc.Share'>
+
+
+					<a *ngIf='share.status == 2' routerLink='/videos/{{ abc.slug }}'>{{abc.name}}</a>
+					
+					<li style="margin-top:10px;" class="list-group-item" *ngIf='share.status == 2'>
+
+						<p class="lead">
+							{{share.Request}}
+							<input  style="float: right; margin-top: -10px;" type="button" (click)="permit(abc._id,0,share.Request)" class="btn btn-primary" value="Accept">
+
+							<input  style="float:right; margin-top: -10px;" type="button" (click)="permit(abc._id,1,share.Request)" class="btn btn-danger" value="Reject">
+						</p>
+
+					</li>
+
+					</ul>	
+			</div>
+
+
+
+			<div *ngIf='abc.createdBy !== username'>
+
+				<ul class="list-group" *ngFor='let share of abc.Share'>
+
+					<li class="list-group-item" *ngIf='share.Request === email' >
+
+						<p class="lead"><a routerLink='/videos/{{ abc.slug }}'>{{abc.name}}</a>
+
+
+						<button style="float: right;" *ngIf='share.status === 2' class="btn btn-primary">
+							Pending
+
+						</button>
+
+						<button style="float: right;"  *ngIf='share.status === 1' class="btn btn-danger">
+							Reject
+
+						</button>
+
+						<button style="float: right;" *ngIf='share.status === 0' class="btn btn-success">
+							Accept
+
+						</button>
+
+						</p>
+
+
+					</li>
+
+				</ul>	
+			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</div>
+
+	</div>
+	
+
+
+
+</div>

@@ -1,0 +1,25 @@
+<div class="container">
+
+	<div class="row">
+
+			<div *ngFor='let abc of user'>
+				<div *ngIf='abc.stories.length !==0'>
+					<h2 class="Page-header" *ngIf='abc.email !== email'><a style="color:white; text-decoration: none;" href="/profile/{{abc.username}}">{{abc.email}}</a></h2>
+
+					<h2 class="Page-header" *ngIf='abc.email == email'><a style="color:white; text-decoration: none;" href="/profile" >{{abc.email}}</a></h2>
+
+
+
+					<ul class="list-group" *ngFor='let story of abc.stories'>
+						
+						<li class="list-group-item">
+								<a class="btn btn-info" href="/record/{{story.Video}}">View</a>
+						</li>
+
+
+					</ul>
+				</div>
+			</div>
+	</div>
+</div>	
+

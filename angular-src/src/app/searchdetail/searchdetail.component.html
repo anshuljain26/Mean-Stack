@@ -1,0 +1,26 @@
+<div class="container text-center" *ngIf='query'>
+	<p class="lead">Searched for {{query}}</p>
+</div>
+
+	
+
+<div *ngFor='let abc of videolist'>
+    <div class='col-md-4 col-sm-12' >
+        <div class="thumbnail" style="height:510px;">
+
+          <a routerLink='/videos/{{ abc.slug }}' routerLinkActive="active" *ngIf='abc.image'><img src="../../assets/{{abc.embed}}" alt="{{ abc.name }} image" style="height: 300px;"></a>
+          <div class="caption">
+            <p class="lead"><strong>Date: </strong><small>{{ abc.createdAt | date:'MMM dd, yyyy' }}</small></p>
+            
+            <h3><a routerLink='/videos/{{ abc.slug }}' routerLinkActive="active">{{ abc.name }}</a></h3>
+            <button *ngIf="username !== abc.createdBy "type="button" name="button" class="btn btn-sm btn-success" (click)="likeBlog(abc._id)"><span class="glyphicon glyphicon-thumbs-up">&nbsp;</span>Likes: {{ abc.likes }}</button>
+
+            <button *ngIf="username !== abc.createdBy "type="button" name="button" class="btn btn-sm btn-warning" (click)="dislikeBlog(abc._id)"><span class="glyphicon glyphicon-thumbs-down">&nbsp;</span>Dislikes: {{ abc.dislikes }}</button>
+            <button><a routerLink='/videos/{{ abc.slug }}' routerLinkActive="active" class="btn btn-default">View</a></button>
+            <input *ngIf="username == abc.createdBy" style="margin-right:20px;" type="button" (click)="deleteVideo(abc._id)" class="btn btn-danger" value="Delete">
+            <button *ngIf="username == abc.createdBy" style="margin-right:60px;" type="button" (click)="updatevi(abc._id)" class="btn btn-primary">
+            <a routerLink='/edit/{{ abc.slug }}'>Update</a></button>
+          </div>
+        </div>
+    </div>
+</div>

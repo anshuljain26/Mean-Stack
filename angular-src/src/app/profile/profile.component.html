@@ -1,0 +1,66 @@
+<div class="well" *ngIf="user" style="background-color: #808080">
+  <h2 class="page-header" style="color: white;">{{user.name}}</h2>
+  <ul class="list-group">
+    <li class="list-group-item lead">Username: {{user.username}}</li>
+    <li class="list-group-item lead">Email: {{user.email}}</li>
+  </ul>
+
+
+</div>
+
+
+<div *ngIf='user.history.length ===0'>
+	<h2 class="page-header" style="color: white;">No Past history....</h2>
+</div>
+
+
+<div *ngIf='user.history.length !==0' class="well" style="background-color:#808080">
+
+	<h2 class="page-header" style="color: white;">View History...</h2>
+	
+	<ul class="list-group" *ngFor='let abc of user.history'>
+		<li class="list-group-item lead">{{abc.Page}}
+			(<small>{{abc.view | date:'short'}}</small>) 
+			<a class ="btn btn-info" style="float:right; margin-top: -12px;" href="/{{abc.Page}}">View</a>
+		</li>
+
+	</ul>
+
+
+
+</div>
+
+<div *ngIf='user.SeenBy.length ===0'>
+	<h2 class="page-header" style="color: white;">No User Show your profile....</h2>
+</div>
+
+
+
+<div class="well well-lg" *ngIf='user.SeenBy.length  !== 0' style="background-color: #808080"> 
+	<h2 class="page-header" style="color: white;">Profile is Viewed By....</h2>
+
+	<ul class="list-group" *ngFor='let abc of user.SeenBy' >
+			<li class="list-group-item lead">{{abc}} <a class ="btn btn-default" style="float:right; margin-top: -12px;" href="/profile/{{abc}}">View</a></li>
+	</ul>
+
+</div>
+<!--
+<div *ngIf='user.stories.length !==0'>
+	<div *ngFor='let abc of user.stories'>
+		<video width="920" height="520" controls (click)="toggleVideo()" #videoPlayer>
+		        		<source src="../../assets/file/{{abc.Video}}" type="video/mp4" />
+		   </video>
+   </div>
+</div>   
+-->
+<div *ngIf='user.stories.length!=0'>
+	
+<h2 class="page-header" style="color: white;">My story</h2>
+
+	<ul class="list-group" *ngFor='let abc of user.stories'>
+			<li class="list-group-item"> Created Time: <small> ({{abc.view | date:'short'}})</small><a class="btn btn-info" style="float:right; margin-top: -12px;" href="/record/{{abc.Video}}">View</a></li>
+
+	</ul>
+
+
+</div>

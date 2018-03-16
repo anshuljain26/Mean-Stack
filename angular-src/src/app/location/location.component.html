@@ -1,0 +1,88 @@
+<!--<h2 class="page-header">Location</h2>
+<form (submit)="onLocationSubmit()">
+  <div class="form-group">
+    <label>Location</label>
+    <input type="text" class="form-control" [(ngModel)]="location" name="location" placeholder="Search Location......">
+  </div>
+  <input type="submit" class="btn btn-primary" value="Location">
+</form>
+
+
+<hr>
+<div class="container">
+	<div class="row">
+		<div *ngIf='address'>
+			 <ul  class="list-group">
+			        <li class="list-group-item">{{address}}</li>
+			  </ul>
+		</div>
+	</div>
+	<div class="row">
+		<div *ngIf='address_component'>	
+
+			<ul *ngFor='let abc of address_component'  class="list-group">
+			
+				<li class="list-group-item"><strong>{{abc.types[0]}}</strong>: {{abc.long_name}}</li>
+
+			</ul>
+		</div>
+
+	</div>
+
+
+</div>-->
+
+
+
+
+
+
+
+
+
+<div class="container">
+      <h1>Search Location</h1>
+      <div class="form-group">
+        <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
+      </div>
+      <div *ngIf='latitude'>
+      <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+        <agm-marker [latitude]="latitude" [longitude]="longitude">
+        	
+        	<agm-info-window>
+        		
+        			<div class="container">
+							<div class="row">
+								<div *ngIf='address'>
+									 <ul  class="list-group">
+									        <li class="list-group-item">{{address}}</li>
+									  </ul>
+								</div>
+							</div>
+							<div class="row">
+								<div *ngIf='address_component'>	
+
+									<ul *ngFor='let abc of address_component'  class="list-group">
+									
+										<li class="list-group-item"><strong>{{abc.types[0]}}</strong>: {{abc.long_name}}</li>
+
+									</ul>
+								</div>
+
+							</div>
+					</div>		
+
+
+
+
+
+
+        	</agm-info-window>
+        </agm-marker>
+
+      </agm-map>
+      </div>
+    </div>
+  `
+
+  <!--<video #video width="640" height="480" autoplay></video>-->

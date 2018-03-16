@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-xs-12">
+    <video #video class="video"></video>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <button md-raised-button class="btn btn-info" (click)="startRecording()"> Record </button>
+    <button md-raised-button class="btn btn-danger"(click) ="stopRecording()"> Stop</button>
+    <button md-raised-button class="btn btn-primary" (click)="download()"> Download</button>
+  </div>
+</div>
+
+<video width="920" height="520" controls (click)="toggleVideo()" #videoPlayer>
+        		<source src="../../assets/file/{{src}}" type="video/mp4" />
+   			 </video>

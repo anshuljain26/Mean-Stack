@@ -1,0 +1,23 @@
+<h2 class="page-header" style="color: white;">Edit Video</h2>
+
+<form (submit)="upload()">
+  <div class="form-group">
+    <label style="color: white;">Name</label>
+    <input type="text" [(ngModel)]="content.name" name="name" class="form-control">
+  </div>
+  <div class="form-group">
+    <label style="color: white;">Slug</label>
+    <input type="text" [(ngModel)]="content.slug" name="slug" class="form-control">
+  </div>
+  <div class="form-group">
+    <label style="color: white;">Image</label>
+    <input type="file" name="image" (change)="file2ChangeEvent($event)" placeholder="Upload file..." />
+
+  </div>
+  <div class="form-group">
+    <label style="color: white;">Videos</label>
+    <input type="file" name="embed" (change)="fileChangeEvent($event)" placeholder="Upload file..." />
+    
+  </div>
+  <input type="submit" class="btn btn-primary" value="Add Video">
+</form>

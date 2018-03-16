@@ -1,0 +1,69 @@
+<h2 class="page-header" style="color: white;">Dashboard</h2>
+
+<div>
+
+
+<span><a class="btn btn-primary" [routerLink]="['/profile']">View Profile</a></span>
+
+<span><a class="btn btn-info" routerLink='/share'>Request Permission</a></span>
+
+<span><a class="btn btn-default" routerLink='/record'>Story</a></span>
+</div>
+
+
+
+<hr>
+
+
+
+
+<div *ngFor = 'let abc of video' class="well">
+
+	<a routerLink='/videos/{{ abc.slug }}' routerLinkActive="active"><p class="lead">{{abc.name}}<small>({{abc.slug}})</small></p></a>
+	<div *ngFor = 'let liked of abc.likedBy'>
+		<div *ngIf = 'liked === username'>
+			<h4>You Liked this post!!!</h4>
+				
+		</div>
+	</div>	
+
+	<hr>
+
+
+	<div *ngFor = 'let disliked of abc.dislikedBy'>
+		<div *ngIf = 'disliked === username'>
+			<h4>You disliked this post!!!</h4>
+				
+		</div>
+	</div>	
+
+
+	<div *ngFor = 'let comment of abc.comments'>
+
+		
+		<div *ngIf="comment.commentby === user">
+			
+			<h4>You are commented on this post......</h4>
+			<div class="row">
+				<div class="col-md-4">
+					<li>{{comment.comment}}</li>
+				</div>
+				
+			</div>
+			
+		</div>
+			
+	</div>	
+
+	<hr>
+
+	
+
+
+
+	
+
+
+
+</div>
+

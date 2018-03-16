@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="well">
+      <h4>Search Reddit</h4>
+      <form (submit)="reditsearch()">
+        <div class="form-group">
+          <input type="text" class="form-control mb-3" placeholder="Search Term..." name="Search" [(ngModel)]="Search">
+        </div>
+        <div class="form-check form-check-inline">
+          Sort By:
+          <input type="radio" [(ngModel)]="model.sortby"  name="sortby" value="Relevance">Relevance<br>
+        <input type="radio" [(ngModel)]="model.sortby"  name="sortby" value="Latest"> Latest
+
+        </div>
+        <h5 class="mt-2">Limit: </h5>
+        <div class="form-group">
+          <select name="limit" id="limit" class="form-control" [(ngModel)]="limit">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="25" selected>25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-default btn-block mt-4">Search</button>
+      </form>
+</div>
+
+
+<div class="container">
+	<div class="row">
+
+		<div class="col-md-6 col-sm-12" *ngFor='let abc of content'>
+			<div class="thumbnail" style="height:500px;">
+
+		
+			<div *ngIf='abc.data.preview'>
+				<img [src]="abc.data.preview.images[0].source.url" onError="this.src = 'https://cdn.comparitech.com/wp-content/uploads/2017/08/reddit-1.jpg'" style="height: 300px; width:500px;">
+			</div>
+
+			<div *ngIf='!abc.data.preview'>
+				<img src="https://cdn.comparitech.com/wp-content/uploads/2017/08/reddit-1.jpg" alt="{{ abc.name }} image" style="height: 250px; width:500px;">
+
+			</div>
+			<div>
+				<h4 style="text-align: center;">{{abc.data.title | safe:[50, '...']}}</h4>
+				<p class="lead">{{abc.data.selftext | safe:[60, '...']}}</p>
+				<a href="{{abc.data.url}}" target="_blank" class="btn btn-primary">Read More</a>
+			</div>
+			<div class="footer">
+			<span class="badge badge-secondary">Subreddit: {{abc.data.subreddit}}</span> 
+        	<span class="badge badge-dark">Score: {{abc.data.score}}</span>
+
+        	</div>
+
+			</div>	
+
+
+		</div>
+		
+	</div>
+	
+
+</div>
